@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.0 <0.9.0;
 import {Test, console} from "forge-std/Test.sol";
-import {DeployBasicNft} from "../script/DeployBasicNft.s.sol";
+import {DeployBasicNft} from "../script/DeployBasicNFT.s.sol";
 import {BasicNFT} from "../src/BasicNFT.sol";
 
 contract BasicNFTTest is Test {
