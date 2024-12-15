@@ -32,7 +32,7 @@ contract ReactionNft is ERC721 {
     }
 
     function toggleReaction(uint256 tokenId) public {
-        if (_isAuthorized(ownerOf(tokenId), msg.sender, tokenId)) {
+        if (!_isAuthorized(ownerOf(tokenId), msg.sender, tokenId)) {
             revert ReactionNFT__PermissionDenied(ownerOf(tokenId), msg.sender);
         }
         s_tokenIdToReaction[tokenId] = (s_tokenIdToReaction[tokenId] ==
@@ -48,7 +48,7 @@ contract ReactionNft is ERC721 {
 
     function tokenURI(
         uint256 tokenId
-    ) public view override returns (string memory imageUri) {
+    ) public view override returns (string memory tokenUri) {
         string memory imageURI;
         if (s_tokenIdToReaction[tokenId] == Reaction.LIKE) {
             imageURI = s_likeSVGImageURI;
@@ -77,5 +77,14 @@ contract ReactionNft is ERC721 {
                 )
             )
         );
+    }
+
+    /*//////////////////////////////////////////////////////////////
+                                GETTERS
+    //////////////////////////////////////////////////////////////*/
+    function getCurrentReaction(
+        uint256 tokenId
+    ) external view returns (Reaction) {
+        return s_tokenIdToReaction[tokenId];
     }
 }
