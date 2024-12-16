@@ -4,7 +4,7 @@ import {Script} from "forge-std/Script.sol";
 import {DevOpsTools} from "lib/foundry-devops/src/DevOpsTools.sol";
 import {BasicNFT} from "src/BasicNFT.sol";
 
-contract MintNFT is Script {
+contract MintReactionNFT is Script {
     string constant PUG =
         "ipfs://bafybeibc5sgo2plmjkq2tzmhrn54bk3crhnc23zd2msg4ea7a4pxrkgfna/4018";
 
